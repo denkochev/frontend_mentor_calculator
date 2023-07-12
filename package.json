@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",
+    "next-themes": "^0.2.1",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.0"
   }
