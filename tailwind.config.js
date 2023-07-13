@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
@@ -9,9 +11,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        
+        darkBg: "hsl(222, 26%, 31%)",
+        lightBg: "hsl(0, 0%, 90%)",
+        purpleBg: "hsl(268, 75%, 9%)",
       },
     },
   },
-  plugins: [],
+  plugins: [
+  ],
 };
