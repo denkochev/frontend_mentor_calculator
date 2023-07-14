@@ -3,8 +3,11 @@
 import Display from "../components/Display";
 import ThemeButton from "../components/ThemeButton";
 import Numpad from "./Numpad";
+import { useStore } from "../../store/store";
 
 export default function Main() {
+  const value = useStore((state) => state.value);
+
   return (
     <div>
       <div className="flex w-96 justify-between">
@@ -16,7 +19,7 @@ export default function Main() {
           <ThemeButton />
         </div>
       </div>
-      <Display />
+      <Display value={value} />
       <Numpad />
     </div>
   );
