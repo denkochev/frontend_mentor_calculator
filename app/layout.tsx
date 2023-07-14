@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Providers from "./providers";
-import ThemeButton from "./components/ThemeButton";
+import Main from "./containers/Main";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,18 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body className="purple:bg-purpleBg flex h-screen flex-col items-center justify-center bg-lightBg dark:bg-darkBg">
         <Providers>
-          <header>
-            <nav>
-              <ul>
-                <li>
-                  <a href="/">Home</a>
-                </li>
-              </ul>
-              <ThemeButton />
-            </nav>
-          </header>
+          <Main />
           {children}
         </Providers>
       </body>
