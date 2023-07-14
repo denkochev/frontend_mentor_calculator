@@ -46,8 +46,9 @@ export default function ThemeButton() {
   };
 
   return (
-    <div className="relative mr-2 inline-block w-10 select-none align-middle">
+    <div className="relative inline-block w-10 select-none align-middle">
       <input
+        className="w-8"
         type="range"
         name="toggle"
         id="toggle"

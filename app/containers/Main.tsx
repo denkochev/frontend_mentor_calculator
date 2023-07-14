@@ -7,6 +7,7 @@ import { useStore } from "../../store/store";
 
 export default function Main() {
   const value = useStore((state) => state.value);
+  const setCurrentValue = useStore((state) => state.setCurrentValue);
 
   return (
     <div>
@@ -20,7 +21,7 @@ export default function Main() {
         </div>
       </div>
       <Display value={value} />
-      <Numpad />
+      <Numpad setCurrentValue={setCurrentValue} />
     </div>
   );
 }

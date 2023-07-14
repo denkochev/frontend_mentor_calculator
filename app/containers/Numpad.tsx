@@ -26,11 +26,19 @@ const buttonsProps: ButtonProps[] = [
   { kind: "control", label: "=" },
 ];
 
-export default function Numpad() {
+export default function Numpad({
+  setCurrentValue,
+}: {
+  setCurrentValue: (value: string) => void;
+}) {
+  const buttonHandler = (label: string): void => {
+    setCurrentValue(label);
+  };
+
   return (
     <div className="grid h-[340px] grid-cols-4 gap-4 rounded-md bg-lightKeyPadBG p-5">
       {buttonsProps.map((buttonProps, index) => (
-        <Button key={index} {...buttonProps} />
+        <Button key={index} handler={buttonHandler} {...buttonProps} />
       ))}
     </div>
   );
