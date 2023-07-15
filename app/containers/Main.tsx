@@ -1,17 +1,12 @@
 "use client";
 
 import Display from "../components/Display";
-import ThemeButton from "../components/ThemeButton";
 import Numpad from "./Numpad";
 import ToggleTheme from "../components/ToggleTheme";
 import { useStore } from "../../store/store";
 
 export default function Main() {
-  const [value, setCurrentValue, changeOperator] = useStore((state) => [
-    state.value,
-    state.setCurrentValue,
-    state.changeOperator,
-  ]);
+  const value = useStore((state) => state.value);
 
   return (
     <div>
@@ -29,10 +24,7 @@ export default function Main() {
         </div>
       </div>
       <Display value={value} />
-      <Numpad
-        setCurrentValue={setCurrentValue}
-        changeOperator={changeOperator}
-      />
+      <Numpad />
     </div>
   );
 }
