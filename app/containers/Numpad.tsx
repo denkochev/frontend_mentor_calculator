@@ -18,8 +18,8 @@ const buttonsProps: ButtonProps[] = [
   { kind: "numeral", label: "2" },
   { kind: "numeral", label: "3" },
   { kind: "operation", label: "-" },
-  { kind: "operation", label: "." },
-  { kind: "operation", label: "0" },
+  { kind: "numeral", label: "." },
+  { kind: "numeral", label: "0" },
   { kind: "operation", label: "/" },
   { kind: "operation", label: "x" },
   { kind: "control", label: "RESET" },
@@ -28,11 +28,18 @@ const buttonsProps: ButtonProps[] = [
 
 export default function Numpad({
   setCurrentValue,
+  changeOperator,
 }: {
   setCurrentValue: (value: string) => void;
+  changeOperator: () => void;
 }) {
-  const buttonHandler = (label: string): void => {
-    setCurrentValue(label);
+  const buttonHandler = (label: string, kind: string): void => {
+    if (kind === "numeral") {
+      setCurrentValue(label);
+    } else if (kind === "operation") {
+      changeOperator();
+    } else if (kind === "control") {
+    }
   };
 
   return (

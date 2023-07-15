@@ -4,7 +4,7 @@ export default function Button({
   kind,
   label,
   handler,
-}: ButtonProps & { handler: (label: string) => void }) {
+}: ButtonProps & { handler: (label: string, kind: string) => void }) {
   let buttonClass: string = "";
   let shadowButtonClass: string = "";
   if (kind === "numeral" || kind === "operation") {
@@ -28,10 +28,10 @@ export default function Button({
 
   return (
     <div
-      className={`${shadowButtonClass} h-11 cursor-pointer rounded-md`}
-      onClick={() => handler(label)}
+      className={`${shadowButtonClass} h-12 cursor-pointer rounded-md`}
+      onClick={() => handler(label, kind)}
     >
-      <div className={`${buttonClass} h-10 rounded-md`}>
+      <div className={`${buttonClass} h-11 rounded-md`}>
         <p className="select-none text-center">{label}</p>
       </div>
     </div>

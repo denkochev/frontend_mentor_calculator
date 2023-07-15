@@ -6,8 +6,11 @@ import Numpad from "./Numpad";
 import { useStore } from "../../store/store";
 
 export default function Main() {
-  const value = useStore((state) => state.value);
-  const setCurrentValue = useStore((state) => state.setCurrentValue);
+  const [value, setCurrentValue, changeOperator] = useStore((state) => [
+    state.value,
+    state.setCurrentValue,
+    state.changeOperator,
+  ]);
 
   return (
     <div>
@@ -21,7 +24,10 @@ export default function Main() {
         </div>
       </div>
       <Display value={value} />
-      <Numpad setCurrentValue={setCurrentValue} />
+      <Numpad
+        setCurrentValue={setCurrentValue}
+        changeOperator={changeOperator}
+      />
     </div>
   );
 }
