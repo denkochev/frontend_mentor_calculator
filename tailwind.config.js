@@ -34,6 +34,8 @@ module.exports = {
         lightOrangeHover: "hsl(25, 100%, 60%)",
         controlYellow: "hsl(45, 7%, 89%)",
         controlOrange: "hsl(35, 11%, 61%)",
+        hoverRed: "hsl(6, 92%, 66%)",
+        desterBlue: "hsl(223, 31%, 20%)",
         /*
         // TEXT COLORS
         */

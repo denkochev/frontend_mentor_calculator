@@ -3,6 +3,7 @@
 import Display from "../components/Display";
 import ThemeButton from "../components/ThemeButton";
 import Numpad from "./Numpad";
+import ToggleTheme from "../components/ToggleTheme";
 import { useStore } from "../../store/store";
 
 export default function Main() {
@@ -16,11 +17,15 @@ export default function Main() {
     <div>
       <div className="flex w-96 justify-between">
         <div>
-          <h1 className="text-2xl text-darkYellow">calc</h1>
+          <h1 className="mx-1 text-2xl text-darkYellow dark:text-prjWhite">
+            calc
+          </h1>
         </div>
         <div className="flex items-center">
-          <h3 className="text-[12px] text-darkYellow">THEME</h3>
-          <ThemeButton />
+          <h3 className="mx-4 text-[10px] text-darkYellow dark:text-prjWhite">
+            THEME
+          </h3>
+          <ToggleTheme />
         </div>
       </div>
       <Display value={value} />
