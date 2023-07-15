@@ -1,4 +1,5 @@
 import Button from "../components/Button";
+import { useStore } from "../../store/store";
 
 export interface ButtonProps {
   kind: "numeral" | "operation" | "control";
@@ -26,18 +27,28 @@ const buttonsProps: ButtonProps[] = [
   { kind: "control", label: "=" },
 ];
 
-export default function Numpad({
-  setCurrentValue,
-  changeOperator,
-}: {
-  setCurrentValue: (value: string) => void;
-  changeOperator: () => void;
-}) {
+export default function Numpad() {
+  const [
+    value,
+    setCurrentValue,
+    changeOperator,
+    addNumberToBuffer,
+    addOperatorToBuffer,
+  ] = useStore((state) => [
+    state.value,
+    state.setCurrentValue,
+    state.changeOperator,
+    state.addNumberToBuffer,
+    state.addOperatorToBuffer,
+  ]);
+
   const buttonHandler = (label: string, kind: string): void => {
     if (kind === "numeral") {
       setCurrentValue(label);
     } else if (kind === "operation") {
       changeOperator();
+      addOperatorToBuffer(label);
+      addNumberToBuffer(Number(value));
     } else if (kind === "control") {
     }
   };
