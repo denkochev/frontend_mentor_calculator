@@ -1,15 +1,19 @@
 import { create } from "zustand";
 
-type Store = {
+export type Store = {
   value: string;
-  buffer: number[];
   isOperator: boolean;
+  numberBuffer: number[];
+  operatorsBuffer: string[];
+  lastNumber: number;
 };
 
-type Actions = {
+export type Actions = {
   setCurrentValue: (value: string) => void;
   setValue: (numbers: string) => void;
   changeOperator: () => void;
+  addNumberToBuffer: (number: number) => void;
+  addOperatorToBuffer: (operator: string) => void;
 };
 
 const addNumbersToDisplay = (
@@ -30,9 +34,13 @@ const addNumbersToDisplay = (
 };
 
 export const useStore = create<Store & Actions>((set) => ({
+  // STATES
   value: "0",
-  buffer: [],
   isOperator: false,
+  numberBuffer: [],
+  operatorsBuffer: [],
+  lastNumber: 0,
+  // ACTIONS
   setValue: (value) => set({ value }),
   changeOperator: () =>
     set((state) => ({
@@ -42,4 +50,8 @@ export const useStore = create<Store & Actions>((set) => ({
     set((state) => ({
       value: addNumbersToDisplay(state, numbers),
     })),
+  addNumberToBuffer: (number: number) =>
+    set((state) => ({ numberBuffer: [...state.numberBuffer, number] })),
+  addOperatorToBuffer: (operator: string) =>
+    set((state) => ({ operatorsBuffer: [...state.operatorsBuffer, operator] })),
 }));
