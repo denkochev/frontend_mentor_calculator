@@ -19,13 +19,11 @@ function parseTheme(theme: string | undefined): number {
 export default function ToggleTheme() {
   const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [toggleValue, setToggleValue] = useState(parseTheme(resolvedTheme));
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return null;
 
   const handleToggleChange = (value: number): void => {
-    setToggleValue(value);
     switch (value) {
       case 1:
         setTheme("dark");
