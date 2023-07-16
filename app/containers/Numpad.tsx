@@ -54,7 +54,7 @@ export default function Numpad() {
   };
 
   return (
-    <div className="grid h-[340px] grid-cols-4 gap-4 rounded-md bg-lightKeyPadBG p-5">
+    <div className="grid h-[340px] grid-cols-4 gap-4 rounded-md bg-lightKeyPadBG p-5 dark:bg-desterBlue">
       {buttonsProps.map((buttonProps, index) => (
         <Button key={index} handler={buttonHandler} {...buttonProps} />
       ))}
