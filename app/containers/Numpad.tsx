@@ -34,12 +34,14 @@ export default function Numpad() {
     changeOperator,
     addNumberToBuffer,
     addOperatorToBuffer,
+    getResult,
   ] = useStore((state) => [
     state.value,
     state.setCurrentValue,
     state.changeOperator,
     state.addNumberToBuffer,
     state.addOperatorToBuffer,
+    state.getResult,
   ]);
 
   const buttonHandler = (label: string, kind: string): void => {
@@ -47,9 +49,15 @@ export default function Numpad() {
       setCurrentValue(label);
     } else if (kind === "operation") {
       changeOperator();
-      addOperatorToBuffer(label);
       addNumberToBuffer(Number(value));
+      getResult();
+      addOperatorToBuffer(label);
     } else if (kind === "control") {
+      switch (label) {
+        case "=":
+          addNumberToBuffer(Number(value));
+          getResult();
+      }
     }
   };
 

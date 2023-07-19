@@ -14,6 +14,7 @@ export type Actions = {
   changeOperator: () => void;
   addNumberToBuffer: (number: number) => void;
   addOperatorToBuffer: (operator: string) => void;
+  getResult: () => void;
 };
 
 const addNumbersToDisplay = (
@@ -31,6 +32,36 @@ const addNumbersToDisplay = (
     return numbers;
   }
   return value + numbers;
+};
+
+const calculate = (numerals: number[], operations: string[]): string => {
+  const values = [...numerals];
+  const operators = [...operations];
+
+  for (let i = 0; i < operators.length; i++) {
+    if (operators[i] === "x") {
+      values[i] = values[i] * values[i + 1];
+      values.splice(i + 1, 1);
+      operators.splice(i, 1);
+      i--;
+    } else if (operators[i] === "/") {
+      values[i] = values[i] / values[i + 1];
+      values.splice(i + 1, 1);
+      operators.splice(i, 1);
+      i--;
+    }
+  }
+
+  let result: number = values[0];
+  for (let i = 0; i < values.length; i++) {
+    if (operators[i] === "+") {
+      result += values[i + 1];
+    } else if (operators[i] === "-") {
+      result -= values[i + 1];
+    }
+  }
+
+  return result.toString();
 };
 
 export const useStore = create<Store & Actions>((set) => ({
@@ -54,4 +85,8 @@ export const useStore = create<Store & Actions>((set) => ({
     set((state) => ({ numberBuffer: [...state.numberBuffer, number] })),
   addOperatorToBuffer: (operator: string) =>
     set((state) => ({ operatorsBuffer: [...state.operatorsBuffer, operator] })),
+  getResult: () =>
+    set((state) => ({
+      value: calculate(state.numberBuffer, state.operatorsBuffer),
+    })),
 }));
