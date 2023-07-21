@@ -7,14 +7,11 @@ import { useStore } from "../../store/store";
 
 export default function Main() {
   const value = useStore((state) => state.value);
-  const [numberBuffer, operatorBuffer, lastNumber, isOperator] = useStore(
-    (state) => [
-      state.numberBuffer,
-      state.operatorsBuffer,
-      state.lastNumber,
-      state.isOperator,
-    ],
-  );
+  const [numberBuffer, operatorBuffer, isOperator] = useStore((state) => [
+    state.numberBuffer,
+    state.operatorsBuffer,
+    state.isOperator,
+  ]);
 
   return (
     <div>
@@ -35,7 +32,6 @@ export default function Main() {
       <Numpad />
       <div>{numberBuffer.toString()}</div>
       <div>{operatorBuffer.toString()}</div>
-      <div>{lastNumber}</div>
       <div>{String(isOperator)}</div>
     </div>
   );

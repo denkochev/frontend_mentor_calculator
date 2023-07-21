@@ -5,7 +5,6 @@ export type Store = {
   isOperator: boolean;
   numberBuffer: number[];
   operatorsBuffer: string[];
-  lastNumber: number;
 };
 
 export type Actions = {
@@ -15,6 +14,7 @@ export type Actions = {
   addNumberToBuffer: (number: number) => void;
   addOperatorToBuffer: (operator: string) => void;
   getResult: () => void;
+  reset: () => void;
 };
 
 const addNumbersToDisplay = (
@@ -70,7 +70,6 @@ export const useStore = create<Store & Actions>((set) => ({
   isOperator: false,
   numberBuffer: [],
   operatorsBuffer: [],
-  lastNumber: 0,
   // ACTIONS
   setValue: (value) => set({ value }),
   changeOperator: () =>
@@ -89,4 +88,11 @@ export const useStore = create<Store & Actions>((set) => ({
     set((state) => ({
       value: calculate(state.numberBuffer, state.operatorsBuffer),
     })),
+  reset: () =>
+    set({
+      value: "0",
+      isOperator: false,
+      numberBuffer: [],
+      operatorsBuffer: [],
+    }),
 }));

@@ -35,6 +35,7 @@ export default function Numpad() {
     addNumberToBuffer,
     addOperatorToBuffer,
     getResult,
+    reset,
   ] = useStore((state) => [
     state.value,
     state.setCurrentValue,
@@ -42,6 +43,7 @@ export default function Numpad() {
     state.addNumberToBuffer,
     state.addOperatorToBuffer,
     state.getResult,
+    state.reset,
   ]);
 
   const buttonHandler = (label: string, kind: string): void => {
@@ -57,6 +59,13 @@ export default function Numpad() {
         case "=":
           addNumberToBuffer(Number(value));
           getResult();
+          break;
+        case "RESET":
+          reset();
+          break;
+        case "DEL":
+          setCurrentValue("0");
+          break;
       }
     }
   };
