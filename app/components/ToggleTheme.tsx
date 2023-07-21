@@ -17,7 +17,8 @@ function parseTheme(theme: string | undefined): number {
 }
 
 export default function ToggleTheme() {
-  const { resolvedTheme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme, themes } = useTheme();
+  console.log(themes);
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -26,9 +27,11 @@ export default function ToggleTheme() {
   const handleToggleChange = (value: number): void => {
     switch (value) {
       case 1:
+        document.documentElement.classList.remove("purple");
         setTheme("dark");
         break;
       case 2:
+        document.documentElement.classList.remove("purple");
         setTheme("light");
         break;
       case 3:
@@ -59,7 +62,7 @@ export default function ToggleTheme() {
         </p>
       </div>
       <div
-        onClick={() => handleToggleChange(1)}
+        onClick={() => handleToggleChange(3)}
         className="h-3 w-3 cursor-pointer rounded-full "
       >
         <p className="relative bottom-5 text-center text-[10px] text-darkYellow dark:text-prjWhite">
