@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="purple:bg-purpleBg flex h-screen flex-col items-center justify-center bg-lightBg dark:bg-darkBg">
+      <body className="flex h-screen flex-col items-center justify-center bg-lightBg font-primary purple:bg-purpleBg dark:bg-darkBg ">
         <Providers>
           <Main />
           {children}

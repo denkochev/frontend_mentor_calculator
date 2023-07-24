@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        primary: ['League Spartan', 'sans-serif'],
+      },
       colors: {
         darkBg: "hsl(222, 26%, 31%)",
         purpleBg: "hsl(268, 75%, 9%)",
