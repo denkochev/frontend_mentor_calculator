@@ -25,7 +25,6 @@ export default function RootLayout({
         style={{ fontFamily: "'League Spartan', sans-serif" }}
         className="flex h-screen flex-col items-center justify-center bg-lightBg purple:bg-purpleBg dark:bg-darkBg "
       >
-        <h3 className="text-3xl">ВСЕМ ПРИВЕТ Я ДЕН!</h3>
         <Providers>
           <Main />
           {children}
