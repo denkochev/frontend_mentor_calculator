@@ -30,6 +30,7 @@ const buttonsProps: ButtonProps[] = [
 export default function Numpad() {
   const [
     value,
+    setValue,
     setCurrentValue,
     changeOperator,
     addNumberToBuffer,
@@ -38,6 +39,7 @@ export default function Numpad() {
     reset,
   ] = useStore((state) => [
     state.value,
+    state.setValue,
     state.setCurrentValue,
     state.changeOperator,
     state.addNumberToBuffer,
@@ -64,7 +66,7 @@ export default function Numpad() {
           reset();
           break;
         case "DEL":
-          setCurrentValue("0");
+          setValue("0");
           break;
       }
     }
